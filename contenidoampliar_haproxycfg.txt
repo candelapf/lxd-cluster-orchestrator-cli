@@ -1,0 +1,10 @@
+
+frontend firstbalance
+    bind *:80
+    option forwardfor
+    default_backend webservers
+
+backend webservers
+    balance roundrobin
+$cambiame$
+    option httpchk

@@ -1,0 +1,13 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ficheros temporales del sistema
+.DS_Store
+Thumbs.db
+
+# Configuración de entornos y editores
+.vscode/
+.idea/
+*.swp
