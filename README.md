@@ -62,34 +62,44 @@ Node.js Express         Node.js Express         Node.js Express
 
 ## 📋 Estructura del Código
 
-El desarrollo se encuentra desacoplado en módulos funcionales reutilizables:
+El desarrollo se encuentra desacoplado en módulos funcionales, configuraciones y recursos de la aplicación:
 
 ```text
 .
-├── pfinal2.py                      # Punto de entrada principal (CLI)
-├── info.py                         # Documentación interactiva de comandos
-├── create.py                       # Creación masiva del escenario inicial
-├── createoneserver.py              # Creación dinámica de una réplica individual
-├── enlarge.py                      # Escalado horizontal del clúster
-├── configure.py                    # Aprovisionamiento e instalación de servicios
-├── start.py                        # Arranque total o selectivo de nodos
-├── stop.py                         # Parada total o selectiva de nodos
-├── list.py                         # Inspección de estado e IPs del clúster
-├── delete.py                       # Destrucción selectiva o borrado completo
-├── direccionesIP.py                # Asignación y comprobación de direccionamiento
-├── remotoCompuB.py                 # Orquestación remota del contenedor DB (Host B)
-├── remotoCompuC.py                 # Orquestación y proxying en nodo auxiliar
-├── install.sh                      # Script de instalación del stack web
-├── app.tar.gz                      # Código empaquetado de la aplicación clínica
-├── webserversHaproxycfg.txt        # Plantilla de configuración HAProxy
-└── 50-cloud-init.yaml              # Configuración de red vía Netplan/cloud-init
+├── .gitignore                          
+├── README.md                           
+│
+├── src/                                
+│   ├── pfinal2.py                      # Punto de entrada principal (CLI)
+│   ├── info.py                         # Documentación interactiva de comandos
+│   ├── create.py                       # Creación masiva del escenario inicial
+│   ├── createoneserver.py              # Creación dinámica de una réplica individual
+│   ├── enlarge.py                      # Escalado horizontal del clúster
+│   ├── configure.py                    # Aprovisionamiento e instalación de servicios
+│   ├── start.py                        # Arranque total o selectivo de nodos
+│   ├── stop.py                         # Parada total o selectiva de nodos
+│   ├── list.py                         # Inspección de estado e IPs del clúster
+│   ├── delete.py                       # Destrucción selectiva o borrado completo
+│   ├── direccionesIP.py                # Asignación y comprobación de direccionamiento
+│   ├── remotoCompuB.py                 # Orquestación remota del contenedor DB (Host B)
+│   └── remotoCompuC.py                 # Orquestación y proxying en nodo auxiliar
+│
+├── config/                             
+│   ├── num_servidores.txt              # Fichero de registro del número de réplicas
+│   ├── 50-cloud-init.yaml              # Configuración de red vía Netplan/cloud-init
+│   ├── webserversHaproxycfg.txt        # Plantilla base de configuración de HAProxy
+│   └── contenidoampliar_haproxycfg.txt # Plantilla para ampliación de HAProxy
+│
+└── app/                                
+    ├── app.tar.gz                      # Paquete de la aplicación web replicada
+    └── install.sh                      # Script de instalación y despliegue en nodos
 ```
 
 ---
 
 ## 💻 Guía de Uso del CLI
 
-El comando principal `pfinal2.py` gestiona todas las operaciones del clúster:
+El comando principal `pfinal2.py` gestiona todas las operaciones del clúster (accediendo previamente a src/ con cd src):
 
 ```bash
 python3 pfinal2.py <orden> [argumentos...]
@@ -180,4 +190,4 @@ Para aislar la base de datos en un computador independiente:
 ---
 
 ## 👥 Autoras
-Proyecto realizado por el **Grupo 8** para la asignatura Arquitectura de Computadores y Sistemas Operativos (ETSIT - UPM).
+Adriana Hernando, Claudia Molina y Candela Prieto
